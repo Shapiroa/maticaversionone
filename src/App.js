@@ -66,10 +66,6 @@ function App() {
           </div>
           <button className="cta-button">Enter the MathVerse</button>
         </div>
-        
-        <div className="character-container">
-          <div className="character"></div>
-        </div>
       </main>
     </div>
   );
