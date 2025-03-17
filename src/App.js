@@ -1,11 +1,13 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import MathGame from './components/MathGame';
 
-function App() {
+function Home() {
+  const navigate = useNavigate();
   const [numbers, setNumbers] = useState([]);
 
   useEffect(() => {
-    // Generate floating math problems
     const generateNumber = () => {
       const operators = ['+', '-', '×', '÷'];
       const operator = operators[Math.floor(Math.random() * operators.length)];
@@ -64,10 +66,21 @@ function App() {
               <span>Future Ready</span>
             </div>
           </div>
-          <button className="cta-button">Enter the MathVerse</button>
+          <button className="cta-button" onClick={() => navigate('/game')}>Enter the MathVerse</button>
         </div>
       </main>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/game" element={<MathGame />} />
+      </Routes>
+    </Router>
   );
 }
 
