@@ -8,6 +8,14 @@
     ],
     "rewrites": [
       {
+        "source": "/grade-select",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/game/**",
+        "destination": "/index.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
