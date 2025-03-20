@@ -66,9 +66,33 @@ function Home() {
               <span>Future Ready</span>
             </div>
           </div>
-          <button className="cta-button" onClick={() => navigate('/game')}>Enter the MathVerse</button>
+          <button className="cta-button" onClick={() => navigate('/grade-select')}>Enter the MathVerse</button>
         </div>
       </main>
+    </div>
+  );
+}
+
+function GradeSelection() {
+  const navigate = useNavigate();
+  const grades = [1, 2, 3, 4, 5, 6, 7];
+
+  return (
+    <div className="App">
+      <div className="grade-selection">
+        <h1>Select Your Grade</h1>
+        <div className="grade-buttons">
+          {grades.map(grade => (
+            <button
+              key={grade}
+              className="cta-button"
+              onClick={() => navigate(`/game/${grade}`)}
+            >
+              Grade {grade}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
@@ -78,7 +102,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/game" element={<MathGame />} />
+        <Route path="/grade-select" element={<GradeSelection />} />
+        <Route path="/game/:grade" element={<MathGame />} />
       </Routes>
     </Router>
   );
